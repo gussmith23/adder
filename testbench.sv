@@ -1,6 +1,6 @@
 module testbench();
 
-reg unsigned a, b, y;
+reg unsigned [1:0] a, b, y, z;
 
 adder adder(a, b, y);
 
@@ -9,9 +9,12 @@ initial begin
 		for (int j = 0; j < 4; j++) begin
 			a = i;
 			b = j;
-			assert(y == i + j);
+                        z = i + j;
+                        #5
+			assert(y == z);
 		end
 	end
+        $finish;
 end
 
 endmodule
